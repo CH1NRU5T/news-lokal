@@ -1,16 +1,26 @@
-# news_lokal
-
-A new Flutter project.
+# News-Lokal
+A Flutter app that displays news and allows sorting by country.
+## Features
+- Uses `env` to hide the API key.
+- Uses `cached_network_image` to cache the images and make them load faster.
+- Beautiful flat UI.
+- Uses `provider` to manage the state.
+- Changing the country from the drop-down will change the news.
 
 ## Getting Started
+- Clone the repository to your local machine.
+- Run `flutter pub get` to install the dependencies.
+- Create a `.env` file in the root directory and add the following line
+```makefile
+KEY=your_api_key_here
+```
+Replace `your_api_key_here` with your actual API key.
+- Run the app using `flutter run`.
+- Changing the country from the drop-down will change the news.
 
-This project is a starting point for a Flutter application.
+## Dependencies
+- `http` - HTTP client for Flutter.
+- `cached_network_image` - Caching library for images in Flutter.
+- `flutter_dotenv` - Library for loading environment variables in Flutter.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
