@@ -153,30 +153,39 @@ class _MyHomePageState extends State<MyHomePage> {
                           return const Text('none');
                         case ConnectionState.active:
                           return const Text('active');
+
                         case ConnectionState.waiting:
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
                         case ConnectionState.done:
-                          List res =
-                              jsonDecode(snapshot.data!.body)['articles'];
-                          List<News> newsList = [];
+                          if (snapshot.data!.statusCode != 200) {
+                            return Center(
+                              child: Text(
+                                  jsonDecode(snapshot.data!.body)['message']),
+                            );
+                          } else {
+                            List res =
+                                jsonDecode(snapshot.data!.body)['articles'];
+                            List<News> newsList = [];
 
-                          for (var i in res) {
-                            newsList.add(News.fromMap(i));
+                            for (var i in res) {
+                              newsList.add(News.fromMap(i));
+                            }
+                            return ListView.separated(
+                              separatorBuilder: (context, index) =>
+                                  const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: Divider(thickness: 1.5),
+                              ),
+                              itemCount: 15,
+                              //currently displaying only 15 news items
+                              itemBuilder: (context, index) {
+                                return CustomListTile(
+                                    newsList: newsList, index: index);
+                              },
+                            );
                           }
-                          return ListView.separated(
-                            separatorBuilder: (context, index) => const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Divider(thickness: 1.5),
-                            ),
-                            itemCount: 15,
-                            //currently displaying only 15 news items
-                            itemBuilder: (context, index) {
-                              return CustomListTile(
-                                  newsList: newsList, index: index);
-                            },
-                          );
                       }
                     },
                   ),

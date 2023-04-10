@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lokal.news_lokal">
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="news_lokal"
         android:name="${applicationName}"
